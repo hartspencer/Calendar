@@ -225,43 +225,43 @@
             };
 
             // event creating
-            dp.onTimeRangeSelected = function (args) {
+            // dp.onTimeRangeSelected = function (args) {
 
-              var form = [
-                {name: "Name", id: "text"},
-                {name: "Start", id: "start", dateFormat: "MMMM d, yyyy h:mm tt", disabled: true},
-                {name: "End", id: "end", dateFormat: "MMMM d, yyyy h:mm tt", disabled: true},
-              ];
+            //   var form = [
+            //     {name: "Name", id: "text"},
+            //     {name: "Start", id: "start", dateFormat: "MMMM d, yyyy h:mm tt", disabled: true},
+            //     {name: "End", id: "end", dateFormat: "MMMM d, yyyy h:mm tt", disabled: true},
+            //   ];
 
-              var data = {
-                start: args.start,
-                end: args.end,
-                text: "Event"
-              };
+            //   var data = {
+            //     start: args.start,
+            //     end: args.end,
+            //     text: "Event"
+            //   };
 
-              DayPilot.Modal.form(form, data).then(function(modal) {
-                dp.clearSelection();
+            //   DayPilot.Modal.form(form, data).then(function(modal) {
+            //     dp.clearSelection();
 
-                if (modal.canceled) {
-                  return;
-                }
+            //     if (modal.canceled) {
+            //       return;
+            //     }
 
-                DayPilot.Http.ajax({
-                  url: "calendar_create.php",
-                  data: modal.result,
-                  success: function(ajax) {
-                    var dp = switcher.active.control;
-                    dp.events.add({
-                      start: data.start,
-                      end: data.end,
-                      id: ajax.data.id,
-                      text: data.text
-                    });
-                  }
-                });
+            //     DayPilot.Http.ajax({
+            //       url: "calendar_create.php",
+            //       data: modal.result,
+            //       success: function(ajax) {
+            //         var dp = switcher.active.control;
+            //         dp.events.add({
+            //           start: data.start,
+            //           end: data.end,
+            //           id: ajax.data.id,
+            //           text: data.text
+            //         });
+            //       }
+            //     });
 
-              });
-            };
+            //   });
+            // };
 
             dp.onEventClick = function(args) {
               DayPilot.Modal.alert(args.e.data.text);
